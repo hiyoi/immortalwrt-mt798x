@@ -154,6 +154,12 @@ platform_do_upgrade() {
 	*snand*)
 		nand_do_upgrade "$1"
 		;;
+	beeconmini,seed-ac3)
+		CI_KERNPART="kernel"
+		CI_ROOTPART="rootfs"
+		CI_DATAPART="rootfs_data"
+		emmc_do_upgrade "$1"
+		;;
 	bananapi,bpi-r3mini-emmc |\
 	glinet,gl-mt6000 |\
 	jdcloud,re-cp-03 |\
@@ -162,12 +168,6 @@ platform_do_upgrade() {
  		CI_ROOTPART="rootfs"
  		emmc_do_upgrade "$1"
  		;;
-	beeconmini,seed-ac3)
-		CI_KERNPART="kernel"
-		CI_ROOTPART="rootfs"
-		CI_DATAPART="rootfs_data"
-		emmc_do_upgrade "$1"
-		;;
 	*)
 		default_do_upgrade "$1"
 		;;
